@@ -1,0 +1,38 @@
+{
+  "name": "pepper.com",
+  "version": "0.0.1",
+  "description": "Competence test for Front-end Developer position",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "gulp build",
+    "clean": "rimraf /dist",
+    "postsetup": "yarn",
+    "prebuild": "npm run clean",
+    "prestart": "npm run build",
+    "prewatch": "npm run clean",
+    "setup": "npm i --production --silent > /dev/null",
+    "start": "static-server ./dest",
+    "watch": "cult -- watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "https://github.com/tvardy",
+  "license": "WTFPL",
+  "dependencies": {
+    "yarn": "0.24.5"
+  },
+  "devDependencies": {
+    "browser-sync": "2.18.12",
+    "cult": "2.0.6",
+    "eslint": "3.19.0",
+    "gulp": "3.9.1",
+    "gulp-autoprefixer": "4.0.0",
+    "gulp-cssnano": "2.1.2",
+    "gulp-plumber": "1.1.0",
+    "gulp-sass": "3.1.0",
+    "gulp-sourcemaps": "2.6.0",
+    "rimraf": "2.6.1",
+    "static-server": "2.0.4"
+  },
+  "private": true
+}
