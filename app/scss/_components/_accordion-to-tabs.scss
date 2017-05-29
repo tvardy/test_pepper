@@ -1,0 +1,98 @@
+$c-accordion-anim-time: .4s;
+
+.c-accordion-to-tabs {
+  color: $c-component__text;
+  display: flex;
+  flex-wrap: wrap;
+
+  [tab-name] {
+    background-color: rgba($c-component__accent__bg, .5);
+    border-style: solid;
+    border-width: 0;
+    color: $c-component__accent__text;
+    cursor: pointer;
+    display: block;
+    padding: 1em;
+    transition: background-color #{$c-accordion-anim-time} ease-in-out,
+      color #{$c-accordion-anim-time} ease-in-out;
+    width: 100%;
+
+    &:before {
+      content: attr(icon);
+      display: inline-block;
+      font-family: "Material Icons", sans-serif;
+      font-size: 1.25em;
+      line-height: 1;
+      margin-right: .5rem;
+      position: relative;
+      top: .2em;
+    }
+
+    &:not(:first-of-type) {
+      margin-top: 1px;
+    }
+
+    @media #{$q-medium-up} {
+      background-color: rgba($c-component__accent__bg, .25);
+      order: 1;
+      width: auto;
+
+      &:not(:first-of-type) {
+        margin-left: 1px;
+      }
+    }
+  }
+
+  [tab-content] {
+    background-color: $c-component__bg;
+    display: none;
+    padding: 1px 1em 1em;
+    width: 100%; // only IE 10 needs this
+
+    @media #{$q-medium-up} {
+      flex-grow: 1;
+      order: 99;
+    }
+
+    > * {
+      animation: fadeIn .5s ease-in-out;
+    }
+  }
+
+  [tab-select] {
+    display: none;
+
+    &:checked {
+      & + [tab-name] {
+        background-color: $c-component__accent__bg;
+        color: $c-component__accent__text;
+
+        @media #{$q-medium-up} {
+          background-color: $c-component__bg;
+          color: $c-component__accent__bg;
+
+          box-shadow: inset 0 .25em $c-component__accent__bg,
+            0 .3em .5em rgba($c-component__text, .66);
+
+          &:first-of-type {
+            box-shadow: inset 0 .25em $c-component__accent__bg,
+              .3em .2em .5em -.3em rgba($c-component__text, .66);
+          }
+        }
+
+        & + [tab-content] {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
