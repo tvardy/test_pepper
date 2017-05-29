@@ -1,11 +1,11 @@
-$c-accordion-anim-time: .4s;
+$c-tabs-anim-time: .4s;
 
-.c-accordion-to-tabs {
+.c-tabs {
   color: $c-component__text;
   display: flex;
   flex-wrap: wrap;
 
-  [tab-name] {
+  &__name {
     background-color: rgba($c-component__accent__bg, .5);
     border-style: solid;
     border-width: 0;
@@ -13,8 +13,8 @@ $c-accordion-anim-time: .4s;
     cursor: pointer;
     display: block;
     padding: 1em;
-    transition: background-color #{$c-accordion-anim-time} ease-in-out,
-      color #{$c-accordion-anim-time} ease-in-out;
+    transition: background-color #{$c-tabs-anim-time} ease-in-out,
+      color #{$c-tabs-anim-time} ease-in-out;
     width: 100%;
 
     &:before {
@@ -43,7 +43,7 @@ $c-accordion-anim-time: .4s;
     }
   }
 
-  [tab-content] {
+  &__content {
     background-color: $c-component__bg;
     display: none;
     padding: 1px 1em 1em;
@@ -59,11 +59,11 @@ $c-accordion-anim-time: .4s;
     }
   }
 
-  [tab-select] {
+  &__select {
     display: none;
 
     &:checked {
-      & + [tab-name] {
+      & + .c-tabs__name {
         background-color: $c-component__accent__bg;
         color: $c-component__accent__text;
 
@@ -80,7 +80,7 @@ $c-accordion-anim-time: .4s;
           }
         }
 
-        & + [tab-content] {
+        & + .c-tabs__content {
           display: block;
         }
       }
