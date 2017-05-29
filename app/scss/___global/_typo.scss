@@ -1,0 +1,22 @@
+article {
+  p {
+    margin: 0;
+    text-align: justify;
+
+    @each $dir in 'center', 'left', 'right' {
+      .t-#{$dir} & {
+        text-align: #{$dir};
+      }
+    }
+  }
+
+  p + p {
+    margin-top: $u-base__line-height * $u-base__text;
+  }
+
+  aside {
+    background-color: $c-component__bg;
+    font-size: .9em;
+    padding: 1em;
+  }
+}

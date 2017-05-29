@@ -1,0 +1,23 @@
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  background-color: darken($c-body__bg, 10%);
+}
+
+body {
+  background-color: $c-body__bg;
+  box-shadow: 0 0 1em rgba($c-body__text, .22);
+  color: $c-body__text;
+  font-size: $u-base__text;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: $u-base__line-height;
+  max-width: $u-max-body-width;
+  min-height: 100vh;
+  padding-bottom: 1em;
+  padding-top: 1px;
+  width: 100%;
+}

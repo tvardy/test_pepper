@@ -1,0 +1,67 @@
+$gutter: $u-rem__query;
+
+.o-grid {
+
+  &__container {
+    padding-left: 1em;
+    padding-right: 1em;
+    width: 100%;
+
+    @media #{$q-xlarge-up} {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  &__row {
+    @include clearfix;
+
+    width: 100%;
+
+    @media #{$q-large-up} {
+      max-width: $u-max-row-width;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &__item {
+    display: block;
+
+    & + & {
+      margin-top: 1rem;
+    }
+
+    @media #{$q-medium-up} {
+      float: left;
+      margin: 0;
+
+      & + & {
+        margin-top: 0;
+        margin-left: $gutter;
+      }
+
+      &--1-of-2 {
+        width: calc(#{(100% / 2)} - #{$gutter / 2});
+      }
+
+      &--1-of-3 {
+        width: calc(#{(100% / 3)} - #{$gutter / 3 * 2});
+      }
+
+      &--2-of-3 {
+        width: calc(#{(100% / 3 * 2)} - #{$gutter / 3});
+      }
+
+      &--1-of-4 {
+        width: calc(#{(100% / 4)} - #{$gutter / 4 * 3});
+      }
+
+      &--3-of-4 {
+        width: calc(#{(100% / 4 * 3)} - #{$gutter / 4});
+      }
+
+    }
+  }
+
+}

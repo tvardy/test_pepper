@@ -8,11 +8,13 @@ const sass = require('gulp-sass');
 const sourceMaps = require('gulp-sourcemaps');
 
 gulp.task('sass:dev', function sass_dev() {
-  return gulp
+  gulp
     .src('app/scss/style.scss')
     .pipe(sourceMaps.init())
     .pipe(plumber())
-    .pipe(sass())
+    .pipe(sass({
+      precision: 2
+    }))
     .pipe(autoPrefixer({
       browsers: ['last 4 versions', 'ie >= 9'],
       cascade: false
@@ -23,7 +25,7 @@ gulp.task('sass:dev', function sass_dev() {
 });
 
 gulp.task('sass:prod', ['sass:dev'], function sass_prod() {
-  return gulp
+  gulp
     .src('app/css/style.css')
     .pipe(cssNano())
     .pipe(gulp.dest('app/css'));
@@ -38,7 +40,7 @@ gulp.task('sync', function sync() {
   });
 });
 
-gulp.task('watch', ['sync', 'watch:styles']);
+gulp.task('watch', ['sync', 'watch:styles', 'watch:html']);
 
 gulp.task('watch:styles', ['sass:dev'], function watch_styles() {
   return gulp.watch('app/scss/**/*.scss', ['sass:dev']);

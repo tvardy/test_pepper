@@ -1,0 +1,29 @@
+$q-shift: rem-calc(1px);
+$q-small: 40 * $u-rem__query;    // 640px
+$q-medium: 48 * $u-rem__query;   // 768px
+$q-large: 64 * $u-rem__query;    // 1024px
+$q-xlarge: 90 * $u-rem__query;   // 1440px
+$q-xxlarge: 120 * $u-rem__query; // 1920px
+
+$q-small-range: (0em, $q-small - $q-shift);
+$q-medium-range: ($q-medium, $q-large - $q-shift);
+$q-large-range: ($q-large, $q-xlarge - $q-shift);
+$q-xlarge-range: ($q-xlarge, $q-xxlarge - $q-shift);
+
+$screen: "only screen";
+$landscape: "#{$screen} and (orientation: landscape)";
+$portrait: "#{$screen} and (orientation: portrait)";
+
+$q-small-up: $screen;
+$q-small-only: "#{$screen} and (max-width: #{upper-bound($q-small-range)})";
+
+$q-medium-up: "#{$screen} and (min-width:#{lower-bound($q-medium-range)})";
+$q-medium-only: "#{$screen} and (min-width:#{lower-bound($q-medium-range)}) and (max-width:#{upper-bound($q-medium-range)})";
+
+$q-large-up: "#{$screen} and (min-width:#{lower-bound($q-large-range)})";
+$q-large-only: "#{$screen} and (min-width:#{lower-bound($q-large-range)}) and (max-width:#{upper-bound($q-large-range)})";
+
+$q-xlarge-up: "#{$screen} and (min-width:#{lower-bound($q-xlarge-range)})";
+$q-xlarge-only: "#{$screen} and (min-width:#{lower-bound($q-xlarge-range)}) and (max-width:#{upper-bound($q-xlarge-range)})";
+
+$q-xxlarge-up: "#{$screen} and (min-width:#{$q-xxlarge})";

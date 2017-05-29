@@ -1,18 +1,13 @@
-html {
-  box-sizing: border-box;
-}
+@import "_____utils/normalize";
+@import "_____utils/functions";
+@import "_____utils/clearfix";
 
-*, *:before, *:after {
-  box-sizing: inherit;
-}
+@import "____settings/colours";
+@import "____settings/units";
+@import "____settings/media-queries";
 
-html, body {
-  margin: 0;
-  padding: 0;
-}
+@import "___global/page";
+@import "___global/typo";
 
-body {
-  background-color: lightcyan;
-  font-family: sans-serif;
-  min-height: 100%;
-}
+@import "__objects/grid";
+

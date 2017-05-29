@@ -1,0 +1,14 @@
+$u-rem__base: 10px;
+$u-rem__query: rem-calc(1.6 * $u-rem__base);     // 16px
+
+$u-spacing: $u-rem__query;              // 16px
+$u-spacing--huge: $u-rem__query * 2;    // 32px
+$u-spacing--large: $u-rem__query * 1.5; // 24px
+$u-spacing--small: $u-rem__query / 2;   // 8px
+$u-spacing--tiny: $u-rem__query / 4;    // 4px
+
+$u-base__text: $u-rem__query;           // 16px
+$u-base__line-height: 1.44;
+
+$u-max-row-width: 64 * $u-rem__query;   // 1024px
+$u-max-body-width: 90 * $u-rem__query;  // 1440px

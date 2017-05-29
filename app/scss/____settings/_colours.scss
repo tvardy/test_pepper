@@ -1,0 +1,38 @@
+// main palette
+$c-primary     : #4d2608;
+$c-secondary   : #053305;
+$c-alert       : #f04020;
+$c-success     : #008000;
+$c-warning     : #cc5f0a;
+$c-info        : #320eef;
+
+// all shades of gray
+$c-white       : #fff;
+$c-ghost       : #fafafa;
+$c-snow        : #f9f9f9;
+$c-vapor       : #f6f6f6;
+$c-white-smoke : #f5f5f5;
+$c-silver      : #efefef;
+$c-smoke       : #eee;
+$c-gainsboro   : #ddd;
+$c-iron        : #ccc;
+$c-base        : #aaa;
+$c-aluminum    : #999;
+$c-jumbo       : #888;
+$c-monsoon     : #777;
+$c-steel       : #666;
+$c-charcoal    : #555;
+$c-tuatara     : #444;
+$c-oil         : #333;
+$c-jet         : #222;
+$c-black       : #000;
+
+// global
+$c-body__bg    : $c-smoke;
+$c-body__text  : $c-oil;
+
+// components
+$c-component__bg           : $c-snow;
+$c-component__text         : $c-steel;
+$c-component__accent__bg   : $c-primary;
+$c-component__accent__text : $c-component__bg;
