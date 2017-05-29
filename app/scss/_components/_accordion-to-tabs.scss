@@ -1,3 +1,23 @@
+//
+//
+//  I need to honestly admit, that the first solution I came by was:
+//  - having 2 separate lists of tab and accordion headers;
+//    one shown only on smaller screen and the other on bigger
+//  - having a loop for hard-coding a bunch of rules like:
+//
+//   @for $i from 1 through 10 {
+//     .c-tabs > .c-tabs__upper-input:nth-of-type(#{$i}):checked ~ .c-tabs__content:nth-of-type(#{$i) {
+//       display: block;
+//     }
+//   }
+//
+//  But I really wasn't satisfied with this.
+//
+//  So I googled and came across this [CodePen][https://codepen.io/mikestreety/pen/yVNNNm]
+//  and with its help I figured out how to use a flex box for the below solution.
+//
+//
+
 $c-tabs-anim-time: .4s;
 
 .c-tabs {
