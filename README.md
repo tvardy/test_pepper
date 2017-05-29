@@ -33,7 +33,7 @@ You can now [visit the project](http://localhost:9080) in a browser of your choi
 Note: If you have something else running on the port `9080`, you can override the default setting by running:
 
 ```bash
-npm run -- -p YOUR_PORT_NUMBER
+npm start -- -p YOUR_PORT_NUMBER
 ```
 
 
