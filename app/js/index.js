@@ -1,6 +1,8 @@
 import * as m from 'Minified';
 import Carpet from 'Carpet';
 
+import './modules/tabs';
+
 const debugKey = 'alwaysLookOnTheBrightSideOfLife';
 const debugVal = 'whistle';
 
@@ -16,7 +18,6 @@ function init () {
     Carpet.loggingEnabled = true;
   }
   Carpet.init();
-  console.log('ready!');
 }
 
 $(init);

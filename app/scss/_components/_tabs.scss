@@ -74,6 +74,24 @@ $c-tabs-anim-time: .4s;
       order: 99;
     }
 
+    &.is-error,
+    &.is-loading {
+      padding-bottom: 3em;
+      padding-top: 3em;
+    }
+
+    &.is-error {
+      color: $c-alert;
+      text-align: center;
+    }
+
+    &.is-loading {
+      background-image: url(../assets/ring.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 2.5em;
+    }
+
     > * {
       animation: fadeIn .5s ease-in-out;
     }
