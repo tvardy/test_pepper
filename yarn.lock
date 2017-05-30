@@ -1953,7 +1953,7 @@ gulp-autoprefixer@4.0.0:
     through2 "^2.0.0"
     vinyl-sourcemaps-apply "^0.2.0"
 
-gulp-css-inline-assets@^0.1.5:
+gulp-css-inline-assets@0.1.5:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/gulp-css-inline-assets/-/gulp-css-inline-assets-0.1.5.tgz#4ce85ab161bbbf774cbb24da06a896c5b81e052e"
   dependencies:

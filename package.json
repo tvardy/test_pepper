@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "build": "jspm bundle-sfx ./app/js/index ./dest/js/build.min.js --minify --skip-source-maps",
-    "clean": "rimraf /dest /app/css",
+    "clean": "rimraf ./dest ./app/css",
     "jspm": "jspm install",
     "postbuild": "gulp build",
     "postsetup": "yarn && npm run jspm > /dev/null",

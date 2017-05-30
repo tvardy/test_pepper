@@ -10,8 +10,8 @@ const sourceMaps = require('gulp-sourcemaps');
 const rename = require('gulp-rename');
 const replace = require('gulp-replace');
 
-gulp.task('sass:dev', function sass_dev() {
-  gulp
+gulp.task('sass:dev', function sass_dev(done) {
+  const stream = gulp
     .src('app/scss/style.scss')
     .pipe(sourceMaps.init())
     .pipe(plumber())
@@ -25,10 +25,13 @@ gulp.task('sass:dev', function sass_dev() {
     .pipe(sourceMaps.write('./'))
     .pipe(browserSync.stream())
     .pipe(gulp.dest('app/css'));
+
+  stream.on('end', done);
+  stream.on('error', (err) => { done(err); });
 });
 
 gulp.task('sass:prod', ['sass:dev'], function sass_prod() {
-  gulp
+   gulp
     .src('app/css/style.css')
     .pipe(inline())
     .pipe(cssNano({
@@ -70,7 +73,7 @@ gulp.task('watch:styles', ['sass:dev'], function watch_styles() {
 });
 
 gulp.task('build', ['sass:prod'], function build () {
-  return gulp
+  gulp
     .src('app/**/*.html')
     .pipe(replace(/("\/css\/style)(\.css")/, '$1.min$2'))
     .pipe(replace(/(<!-- build:js -->)(\s+.+)+\s+(<!-- endbuild -->)/m, '<script src="/js/build.min.js"></script>'))
