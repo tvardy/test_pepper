@@ -4,7 +4,7 @@
   "description": "Competence test for Front-end Developer position",
   "main": "src/index.js",
   "scripts": {
-    "build": "jspm bundle-sfx ./app/js/index ./dest/js/build.min.js --minify --skip-source-maps",
+    "build": "webpack --progress --colors --env=prod",
     "clean": "rimraf ./dest ./app/css",
     "jspm": "jspm install",
     "postbuild": "gulp build",
@@ -14,7 +14,7 @@
     "prewatch": "npm run clean",
     "setup": "npm i --production --silent > /dev/null",
     "start": "static-server ./dest",
-    "watch": "cult -- watch",
+    "watch": "concurrently \"cult -- watch\" \"webpack-dev-server\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -24,6 +24,9 @@
     "yarn": "0.24.6"
   },
   "devDependencies": {
+    "babel-loader": "7.0.0",
+    "babel-preset-latest": "6.24.1",
+    "babel-preset-stage-1": "6.24.1",
     "browser-sync": "2.18.12",
     "concurrently": "3.4.0",
     "cult": "2.0.6",
@@ -42,7 +45,10 @@
     "gulp-sourcemaps": "2.6.0",
     "jspm": "0.16.53",
     "rimraf": "2.6.1",
-    "static-server": "2.0.4"
+    "static-server": "2.0.4",
+    "webpack": "2.6.1",
+    "webpack-dev-server": "2.4.5",
+    "webpack-merge": "4.1.0"
   },
   "private": true,
   "jspm": {
