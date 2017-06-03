@@ -1,7 +1,6 @@
 const gulp = require('gulp');
 
 const autoPrefixer = require('gulp-autoprefixer');
-const browserSync = require('browser-sync').create();
 const cssNano = require('gulp-cssnano');
 const inline = require('gulp-css-inline-assets');
 const plumber = require('gulp-plumber');
@@ -10,8 +9,8 @@ const sourceMaps = require('gulp-sourcemaps');
 const rename = require('gulp-rename');
 const replace = require('gulp-replace');
 
-gulp.task('sass:dev', function sass_dev(done) {
-  const stream = gulp
+gulp.task('sass:dev', function sass_dev() {
+  return gulp
     .src('app/scss/style.scss')
     .pipe(sourceMaps.init())
     .pipe(plumber())
@@ -23,11 +22,7 @@ gulp.task('sass:dev', function sass_dev(done) {
       cascade: false
     }))
     .pipe(sourceMaps.write('./'))
-    .pipe(browserSync.stream())
     .pipe(gulp.dest('app/css'));
-
-  stream.on('end', done);
-  stream.on('error', (err) => { done(err); });
 });
 
 gulp.task('sass:prod', ['sass:dev'], function sass_prod() {
@@ -43,30 +38,7 @@ gulp.task('sass:prod', ['sass:dev'], function sass_prod() {
     .pipe(gulp.dest('dest/css'));
 });
 
-gulp.task('sync', function sync() {
-  browserSync.init({
-    open: false,
-    serveStatic: [
-      {
-        route: '/jspm_packages',
-        dir: 'jspm_packages'
-      }
-    ],
-    server: {
-      baseDir: 'app'
-    }
-  });
-});
-
-gulp.task('watch', ['sync', 'watch:html', 'watch:scripts', 'watch:styles']);
-
-gulp.task('watch:html', function watch_html() {
-  return gulp.watch('app/**/*.html', browserSync.reload);
-});
-
-gulp.task('watch:scripts', function watch_html() {
-  return gulp.watch('app/**/*.js', browserSync.reload);
-});
+gulp.task('watch', ['watch:styles']);
 
 gulp.task('watch:styles', ['sass:dev'], function watch_styles() {
   return gulp.watch('app/scss/**/*.scss', ['sass:dev']);
@@ -75,7 +47,7 @@ gulp.task('watch:styles', ['sass:dev'], function watch_styles() {
 gulp.task('build', ['sass:prod'], function build () {
   gulp
     .src('app/**/*.html')
-    .pipe(replace(/("\/css\/style)(\.css")/, '$1.min$2'))
+    .pipe(replace(/("\/css\/.+)(\.css")/, '$1.min$2'))
     .pipe(replace(/(<!-- build:js -->)(\s+.+)+\s+(<!-- endbuild -->)/m, '<script src="/js/build.min.js"></script>'))
     .pipe(gulp.dest('dest'));
 });
