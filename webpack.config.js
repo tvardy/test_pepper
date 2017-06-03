@@ -7,13 +7,12 @@ const config = {
   common: {
     entry: './app/js/index.js',
     output: {
-      filename: 'build.min.js',
       path: path.resolve(__dirname, 'dest/js')
     },
     resolve: {
       alias: {
-        Carpet: './jspm_package/github/mateuszgachowski/Carpet.js@3.1.3/dist/carpet.js',
-        Minified: './jspm_packages/github/timjansen/minified.js@2015.1.1/dist/minified.js'
+        Carpet: 'carpet.js',
+        Minified: 'minified/dist/minified.js'
       }
     },
     module: {
@@ -27,17 +26,22 @@ const config = {
   },
 
   dev: {
+    output: {
+      filename: 'build.js'
+    },
     devServer: {
       port: 3000,
-      host: 'localhost',
-      historyApiFallback: true,
-      noInfo: false,
-      stats: 'minimal'
+      contentBase: path.join(__dirname, 'app'),
+      compress: true,
+      watchContentBase: true
     },
     devtool: 'cheap-source-map'
   },
 
   prod: {
+    output: {
+      filename: 'build.min.js'
+    },
     plugins: [
       new webpack.LoaderOptionsPlugin({
         minimize: true,
