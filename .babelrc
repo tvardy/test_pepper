@@ -3,6 +3,10 @@
     "latest",
     "stage-3"
   ],
+  "plugins": [
+    "babel-plugin-syntax-jsx",
+    [ "babel-plugin-inferno",  { "imports": true }]
+  ],
   "sourceMaps": "inline",
   "env": {
     "production": {
