@@ -1,6 +1,6 @@
 {
   "name": "pepper.com",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Competence test for Front-end Developer position",
   "main": "src/index.js",
   "scripts": {
