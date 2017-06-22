@@ -1,0 +1,9 @@
+{
+  "id": "some-tab",
+  "tabs": [
+    { "id": "123", "name": "Tab Item 1", "icon": "event" },
+    { "id": "234", "name": "Tab Item 2", "icon": "history" },
+    { "id": "345", "name": "Tab Item 3", "icon": "lightbulb_outline" },
+    { "id": "456", "name": "Tab Item 4", "icon": "face" }
+  ]
+}

@@ -1,23 +1,29 @@
-import * as m from 'Minified';
-import Carpet from 'Carpet';
+import Inferno from 'inferno';
 
-import './modules/tabs';
+import { Tabs } from './components/Tabs';
 
-const debugKey = 'alwaysLookOnTheBrightSideOfLife';
-const debugVal = 'whistle';
-
-const $ = m.$;
-
-function init () {
-  $('html').set('+js -no-js');
-
-  if (
-    $(`meta[name="${debugKey}"]`).get('@content') === debugVal ||
-    new RegExp(`${debugKey}=${debugVal}`).test(location.search)
-  ) {
-    Carpet.loggingEnabled = true;
-  }
-  Carpet.init();
+if (module.hot) {
+  require('inferno-devtools');
 }
 
-$(init);
+const moduleAttribute = 'data-module';
+const propsAttribute = 'data-props';
+const DOMModules = document.querySelectorAll(`[${moduleAttribute}]`);
+const InfernoComponents = {
+  Tabs
+};
+
+DOMModules.forEach(module => {
+  const name = module.getAttribute(moduleAttribute);
+  const Component = InfernoComponents[name];
+
+  if (Component) {
+    const props = new Function ('return ' + module.getAttribute(propsAttribute))() || {};
+
+    Inferno.render(<Component {...props} />, module);
+  }
+});
+
+if (module.hot) {
+  module.hot.accept()
+}

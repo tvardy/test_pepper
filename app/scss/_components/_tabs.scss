@@ -74,6 +74,10 @@ $c-tabs-anim-time: .4s;
       order: 99;
     }
 
+    &:only-child {
+      display: block;
+    }
+
     &.is-error,
     &.is-loading {
       padding-bottom: 3em;
