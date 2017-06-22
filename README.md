@@ -53,3 +53,12 @@ npm run watch
 command for that purposes.
 
 After running the command you'll have a `browser-sync` environment running [here](http://localhost:3000).
+
+
+# PS
+There are taggeg versions of the code
+
+- `0.0.2` - uses lightweight solution using CarpetJS, MinifiedJS and JSPM
+- `0.0.3` - uses WebPack config in place of JSPM
+- `0.0.4` - uses InfernoJS
+- (planned version) `0.0.5` - uses VueJS
