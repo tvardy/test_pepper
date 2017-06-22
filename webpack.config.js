@@ -9,12 +9,6 @@ const config = {
     output: {
       path: path.resolve(__dirname, 'dest/js')
     },
-    resolve: {
-      alias: {
-        Carpet: 'carpet.js',
-        Minified: 'minified/dist/minified.js'
-      }
-    },
     module: {
       rules: [
         {
@@ -33,9 +27,14 @@ const config = {
       port: 3000,
       contentBase: path.join(__dirname, 'app'),
       compress: true,
+      hot: true,
+      inline: true,
       watchContentBase: true
     },
-    devtool: 'cheap-source-map'
+    devtool: 'source-map',
+    plugins: [
+      new webpack.HotModuleReplacementPlugin()
+    ]
   },
 
   prod: {
@@ -63,6 +62,7 @@ const config = {
 };
 
 module.exports = function (env) {
+  env = env || 'dev';
   console.log('webpack.config:', env);
-  return merge(config.common, config[env] || config.dev);
+  return merge(config.common, config[env]);
 };
