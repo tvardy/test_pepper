@@ -1,5 +1,4 @@
 import EventEmitter from 'events'
-import superagent from 'superagent'
 
 const DEFAULT = {
   index: 0,
@@ -24,8 +23,11 @@ export class TabsModel extends EventEmitter {
   }
 
   getTabsData() {
-    superagent
-      .get(`${this.endpoint}/${this.id}`)
+    fetch(`${this.endpoint}/${this.id}`)
+      .then((response) => {
+        if (response.ok) return response.json()
+        throw ''
+      })
       .then(this._onTabsData)
       .catch(this._onError)
   }
@@ -42,8 +44,11 @@ export class TabsModel extends EventEmitter {
     this._updateTabs(tab, index)
 
     const _get = () => {
-      superagent
-        .get(`${this.endpoint}/${this.detail.replace('{uuid}', tab.id)}`)
+      fetch(`${this.endpoint}/${this.detail.replace('{uuid}', tab.id)}`)
+        .then((response) => {
+          if (response.ok) return response.text()
+          throw ''
+        })
         .then(this._onTabContent.bind(this, tab, index))
         .catch(this._onError.bind(this, tab, index))
     }
@@ -51,17 +56,15 @@ export class TabsModel extends EventEmitter {
     setTimeout(_get, 1234) // the timeout handles fake server delay
   }
 
-  _onTabContent(tab, index, response) {
+  _onTabContent(tab, index, text) {
     tab.isLoading = false
-    tab.content = response.text
+    tab.content = text
 
     this._updateTabs(tab, index)
   }
 
-  _onTabsData = (response) => {
-    const tabs = JSON.parse(response.text).tabs.map(tab => Object.assign(tab, { isLoading: false }))
-
-    this._tabs = tabs
+  _onTabsData = (data) => {
+    this._tabs = data.tabs.map(tab => Object.assign(tab, { isLoading: false }))
     this._emit()
     this.getTabContent(0)
   }
