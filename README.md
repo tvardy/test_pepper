@@ -56,9 +56,10 @@ After running the command you'll have a `browser-sync` environment running [here
 
 
 # PS
-There are taggeg versions of the code
+There are tagged versions of the code:
 
-- `0.0.2` - uses lightweight solution using CarpetJS, MinifiedJS and JSPM
+- `0.0.2` - a lightweight solution using CarpetJS, MinifiedJS and JSPM
 - `0.0.3` - uses WebPack config in place of JSPM
 - `0.0.4` - uses InfernoJS
-- (planned version) `0.0.5` - uses VueJS
+- `0.0.5` - uses InfernoJS with some optimisations (a separate data model + `fetch()`)
+- (planned version) `0.0.6` - uses VueJS
