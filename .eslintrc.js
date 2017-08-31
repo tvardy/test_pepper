@@ -19,6 +19,6 @@ module.exports = {
     "semi-spacing": [2, { "before": false, "after": true }]
   },
   "env": {
-    "node": true
+    "node": false
   }
 };

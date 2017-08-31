@@ -1,11 +1,12 @@
 {
   "presets": [
-    "latest",
-    "stage-3"
+    ["env", {
+      "targets": {
+        "browsers": ["last 3 versions", "safari >= 7", "ie >= 9"]
+      }
+    }]
   ],
   "plugins": [
-    "babel-plugin-syntax-jsx",
-    [ "babel-plugin-inferno",  { "imports": true }],
     "transform-class-properties"
   ],
   "sourceMaps": "inline",
