@@ -1,6 +1,6 @@
 {
   "name": "pepper.com",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Competence test for Front-end Developer position",
   "scripts": {
     "prebuild": "npm run clean",
