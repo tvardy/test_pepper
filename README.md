@@ -62,4 +62,5 @@ There are tagged versions of the code:
 - `0.0.3` - uses WebPack config in place of JSPM
 - `0.0.4` - uses InfernoJS
 - `0.0.5` - uses InfernoJS with some optimisations (a separate data model + `fetch()`)
-- (planned version) `0.0.6` - uses VueJS
+- `0.0.6` - uses VueJS
+- *(maybe some other versions)*
