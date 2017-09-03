@@ -5,11 +5,6 @@ module.exports = {
     "standard",
     "promise"
   ],
-  "env": {
-    "es6": true,
-    "node": false,
-    "browser": true
-  },
   "parserOptions": {
     "ecmaVersion": 6,
     "ecmaFeatures": {
@@ -18,10 +13,14 @@ module.exports = {
     }
   },
   "rules": {
-    "no-console": ["error"],
+    "no-console": ["warn"],
     "no-debugger": ["error"],
-    "semi": [2, "always"],
     "no-extra-semi": 2,
     "semi-spacing": [2, { "before": false, "after": true }]
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": false
   }
 };

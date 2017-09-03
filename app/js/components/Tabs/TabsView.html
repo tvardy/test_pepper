@@ -1,0 +1,23 @@
+<div class="c-tabs" :id="uuid">
+  <template v-for="(tab, index) in tabs">
+    <input
+      class="c-tabs__select"
+      type='radio'
+      :name="uuid"
+      :value="tab.id"
+      :id="tabId(index)"
+      :checked="currentIndex() === index"
+      @click.stop="onChange(index)"
+    />
+    <label
+      class="c-tabs__name"
+      :for="tabId(index)"
+      :icon="tab.icon">
+      {{ tab.name }}
+    </label>
+    <div
+      :class="contentClass(tab)"
+      v-html="tab.content || tab.error">
+    </div>
+  </template>
+</div>
