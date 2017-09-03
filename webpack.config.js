@@ -1,16 +1,27 @@
-const path = require('path');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
+const path = require('path')
+const webpack = require('webpack')
+const merge = require('webpack-merge')
 
 const config = {
 
   common: {
-    entry: './app/js/index.js',
+    entry: [
+      // 'babel-polyfill',
+      // 'whatwg-fetch',
+      './app/js/index.js'
+    ],
     output: {
       path: path.resolve(__dirname, 'dest/js')
     },
     module: {
       rules: [
+        {
+          test: /\.vue$/,
+          loader: 'vue-loader',
+          options: {
+            loaders: {}
+          }
+        },
         {
           test: /\.js$/,
           loader: 'babel-loader'
@@ -42,6 +53,11 @@ const config = {
       filename: 'build.min.js'
     },
     plugins: [
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: '"production"'
+        }
+      }),
       new webpack.LoaderOptionsPlugin({
         minimize: true,
         debug: false
@@ -59,10 +75,10 @@ const config = {
       })
     ]
   }
-};
+}
 
 module.exports = function (env) {
-  env = env || 'dev';
-  console.log('webpack.config:', env);
-  return merge(config.common, config[env]);
-};
+  env = env || 'dev'
+  console.log('webpack.config:', env)
+  return merge(config.common, config[env])
+}

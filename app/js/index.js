@@ -1,28 +1,26 @@
-import Inferno from 'inferno'
+/* global module */
+import Vue from 'vue'
 
-import { Tabs } from './components/Tabs'
-
-if (module.hot) {
-  require('inferno-devtools')
-}
+import components from './components'
 
 const moduleAttribute = 'data-module'
-const propsAttribute = 'data-props'
+const propsAttribute = 'data-settings'
 const DOMModules = document.querySelectorAll(`[${moduleAttribute}]`)
-const InfernoComponents = {
-  Tabs
-}
 
-DOMModules.forEach(module => {
-  const name = module.getAttribute(moduleAttribute)
-  const Component = InfernoComponents[name]
+DOMModules.forEach(el => {
+  const name = el.getAttribute(moduleAttribute)
+  const Component = components[name]
 
   if (Component) {
-    const props = new Function('return ' + module.getAttribute(propsAttribute))() || {}
-
-    Inferno.render(<Component {...props} />, module)
+    Vue.component(name, Component)
+    const data = new Function('return ' + el.getAttribute(propsAttribute))() || {} // eslint-disable-line no-new-func
+    new Vue({ // eslint-disable-line no-new
+      el,
+      data,
+      render: (h) => h(name)
+    })
   }
-});
+})
 
 if (module.hot) {
   module.hot.accept()

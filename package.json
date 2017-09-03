@@ -24,7 +24,9 @@
     "babel-eslint": "7.2.3",
     "babel-loader": "7.1.2",
     "babel-plugin-transform-class-properties": "6.24.1",
+    "babel-polyfill": "6.26.0",
     "babel-preset-env": "1.6.0",
+    "classnames": "2.2.5",
     "concurrently": "3.5.0",
     "cult": "2.0.6",
     "eslint": "4.5.0",
@@ -46,9 +48,12 @@
     "static-server": "2.0.5",
     "uuid": "3.1.0",
     "vue": "2.4.2",
+    "vue-loader": "13.0.4",
+    "vue-template-compiler": "2.4.2",
     "webpack": "3.5.5",
     "webpack-dev-server": "2.7.1",
-    "webpack-merge": "4.1.0"
+    "webpack-merge": "4.1.0",
+    "whatwg-fetch": "2.0.3"
   },
   "private": true
 }
